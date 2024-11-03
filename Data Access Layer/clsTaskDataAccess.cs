@@ -292,5 +292,38 @@ namespace Data_Access_Layer
             }
             return dt;
         }
+
+        public static DataTable ListTasksByCategoryAndLikeName(string TaskName
+            , int CategoryID)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection Connection = new SqlConnection(clsDataAccessLayerSettings._ConnectionString);
+            
+            string Query = @"Select * From Tasks
+                            Where And TaskName like '%'+@TaskName+'%'
+                            And CategoryID = @CategoryID";
+            SqlCommand command = new SqlCommand(Query, Connection);
+            command.Parameters.AddWithValue("@TaskName", TaskName);
+            command.Parameters.AddWithValue("@CategoryID", CategoryID);
+            try
+            {
+                Connection.Open();
+                SqlDataReader Reader = command.ExecuteReader();
+                if (Reader.HasRows)
+                {
+                    dt.Load(Reader);
+                }
+                Reader.Close();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Connection.Close();
+            }
+            return dt;
+        }
     }
 }
