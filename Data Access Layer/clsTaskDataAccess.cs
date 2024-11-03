@@ -9,8 +9,8 @@ namespace Data_Access_Layer
 {
     static public class clsTaskDataAccess
     {
-        static public int AddTask( ref string TaskName , ref string TaskDescription ,
-            ref DateTime DeadLine , int CategoryID = 1)
+        static public int AddTask( string TaskName ,  string TaskDescription ,
+             DateTime DeadLine , int CategoryID = 1)
         {
             int TaskID = -1;
             SqlConnection Connection = new SqlConnection(clsDataAccessLayerSettings._ConnectionString);
@@ -126,6 +126,49 @@ namespace Data_Access_Layer
 
             }
             return IsUpdated;
+        }
+
+        static public bool FindTaskByID(int TaskID , ref string TaskName , ref string TaskDescription , ref DateTime BegainingDate 
+            , ref DateTime DeadLine ,ref int CategoryID ,ref bool IsCompleted)
+        {
+            bool IsFound = false;
+            SqlConnection Connection = new SqlConnection(clsDataAccessLayerSettings._ConnectionString);
+            string Query = @"Select * From Tasks
+                            Where TaskID = @TaskID";
+            SqlCommand Command = new SqlCommand(Query, Connection);
+            Command.Parameters.AddWithValue("@TaskID", TaskID);
+            try
+            {
+                Connection.Open();
+                SqlDataReader Reader = Command.ExecuteReader();
+                if(Reader.Read())
+                {
+                    IsFound = true;
+                    TaskName = (string)Reader["TaskName"];
+                    if (Reader["TaskDescription"] == DBNull.Value)
+                    {
+                        TaskDescription = null;
+                    }
+                    else
+                    {
+                        TaskDescription = (string)Reader["TaskDescription"];
+                    }
+                    BegainingDate = (DateTime)Reader["BegainingDate"];
+                    DeadLine = (DateTime)Reader["DeadLine"];
+                    CategoryID = (int)Reader["CategoryID"];
+                    IsCompleted=((int)Reader["IsComplete"]==1) ? true : false;
+                }
+                Reader.Close();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Connection.Close();
+            }
+            return IsFound;
         }
     }
 }
