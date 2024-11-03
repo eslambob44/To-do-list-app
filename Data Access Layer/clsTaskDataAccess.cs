@@ -257,5 +257,40 @@ namespace Data_Access_Layer
             }
             return dt;
         }
+
+        public static DataTable ListTasksByCategoryAndStatusAndLikeName(string TaskName
+            , int CategoryID , bool IsCompleted)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection Connection = new SqlConnection(clsDataAccessLayerSettings._ConnectionString);
+            byte IsComplete = (byte)((IsCompleted) ? 1 : 0);
+            string Query = @"Select * From Tasks
+                            Where IsComplete = @IsComplete
+                            And TaskName like '%'+@TaskName+'%'
+                            And CategoryID = @CategoryID";
+            SqlCommand command = new SqlCommand(Query, Connection);
+            command.Parameters.AddWithValue("@IsComplete", IsComplete);
+            command.Parameters.AddWithValue("@TaskName", TaskName);
+            command.Parameters.AddWithValue("@CategoryID", CategoryID);
+            try
+            {
+                Connection.Open();
+                SqlDataReader Reader = command.ExecuteReader();
+                if (Reader.HasRows)
+                {
+                    dt.Load(Reader);
+                }
+                Reader.Close();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Connection.Close();
+            }
+            return dt;
+        }
     }
 }
