@@ -170,5 +170,92 @@ namespace Data_Access_Layer
             }
             return IsFound;
         }
+
+        static public DataTable ListTasks()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection Connection = new SqlConnection(clsDataAccessLayerSettings._ConnectionString);
+            string Query = "Select * From Tasks";
+            SqlCommand command = new SqlCommand(Query,Connection);
+            try
+            {
+                Connection.Open();
+                SqlDataReader Reader = command.ExecuteReader();
+                if(Reader.HasRows)
+                {
+                    dt.Load(Reader);
+                }
+                Reader.Close();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Connection.Close();
+            }
+            return dt;
+        }
+
+        public static DataTable ListTasksByStatus(bool IsCompleted) 
+        {
+            DataTable dt = new DataTable();
+            SqlConnection Connection = new SqlConnection(clsDataAccessLayerSettings._ConnectionString);
+            byte IsComplete = (byte)((IsCompleted) ? 1 : 0);
+            string Query = @"Select * From Tasks
+                            Where IsComplete = @IsComplete";
+            SqlCommand command = new SqlCommand(Query, Connection);
+            command.Parameters.AddWithValue("@IsComplete" , IsComplete);
+            try
+            {
+                Connection.Open();
+                SqlDataReader Reader = command.ExecuteReader();
+                if (Reader.HasRows)
+                {
+                    dt.Load(Reader);
+                }
+                Reader.Close();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Connection.Close();
+            }
+            return dt;
+        }
+
+        public static DataTable ListTasksByCategory(int CategoryID)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection Connection = new SqlConnection(clsDataAccessLayerSettings._ConnectionString);
+            
+            string Query = @"Select * From Tasks
+                            Where CategoryID = @CategoryID";
+            SqlCommand command = new SqlCommand(Query, Connection);
+            command.Parameters.AddWithValue("@CategoryID", CategoryID);
+            try
+            {
+                Connection.Open();
+                SqlDataReader Reader = command.ExecuteReader();
+                if (Reader.HasRows)
+                {
+                    dt.Load(Reader);
+                }
+                Reader.Close();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Connection.Close();
+            }
+            return dt;
+        }
     }
 }
