@@ -52,5 +52,30 @@ namespace Data_Access_Layer
             }
             return TaskID;
         }
+
+        static public bool DeleteTask(int TaskID) 
+        {
+            bool IsDeleted = false;
+            SqlConnection Connection = new SqlConnection(clsDataAccessLayerSettings._ConnectionString);
+            string Query = @"Delete From Tasks 
+                            Where TaskID = @TaskID";
+            SqlCommand Command = new SqlCommand(Query,Connection);
+            Command.Parameters.AddWithValue("@TaskID", TaskID);
+            try
+            {
+                Connection.Open();
+                int RowsAffected = Command.ExecuteNonQuery();
+                IsDeleted=(RowsAffected > 0 );
+            }
+            catch
+            {
+        
+            }
+            finally
+            {
+                Connection.Close();
+            }
+            return IsDeleted;
+        }
     }
 }
