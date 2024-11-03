@@ -77,5 +77,55 @@ namespace Data_Access_Layer
             }
             return IsDeleted;
         }
+
+        static public bool ModifyTask(int TaskID, string TaskName, string TaskDescription,
+             DateTime DeadLine, int CategoryID , bool IsCompleted)
+        {
+            bool IsUpdated = false;
+            
+            SqlConnection Connection = new SqlConnection(clsDataAccessLayerSettings._ConnectionString);
+            string Query = @"Update Tasks
+                            set
+                            TaskName = @TaskName , 
+                            TaskDescription = @TaskDescription , 
+                            DeadLine = @DeadLine , 
+                            CategoryID = @CategoryID , 
+                            IsComplete = @IsCompleted  
+                            Where TaskID = @TaskID";
+
+                              
+            SqlCommand Command = new SqlCommand(Query, Connection);
+            Command.Parameters.AddWithValue("@TaskID", TaskID);
+            Command.Parameters.AddWithValue("@TaskName", TaskName);
+            if (string.IsNullOrEmpty(TaskDescription))
+            {
+                Command.Parameters.AddWithValue("@TaskDescription", DBNull.Value);
+            }
+            else
+            {
+                Command.Parameters.AddWithValue("@TaskDescription", TaskDescription);
+            }
+
+            Command.Parameters.AddWithValue("@DeadLine", DeadLine);
+            Command.Parameters.AddWithValue("@CategoryID", CategoryID);
+            byte IsComplete = (byte) ((IsCompleted) ? 1 : 0);
+            Command.Parameters.AddWithValue("@IsCompleted", IsComplete);
+            try
+            {
+                Connection.Open();
+                int RowsAffected = Command.ExecuteNonQuery();
+                IsUpdated = (RowsAffected > 0);
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Connection.Close();
+
+            }
+            return IsUpdated;
+        }
     }
 }
