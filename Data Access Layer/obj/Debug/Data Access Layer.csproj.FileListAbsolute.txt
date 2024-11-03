@@ -1,0 +1,6 @@
+D:\programmin\first jorney\To do list app\Data Access Layer\bin\Debug\Data Access Layer.dll
+D:\programmin\first jorney\To do list app\Data Access Layer\bin\Debug\Data Access Layer.pdb
+D:\programmin\first jorney\To do list app\Data Access Layer\obj\Debug\Data Access Layer.csproj.AssemblyReference.cache
+D:\programmin\first jorney\To do list app\Data Access Layer\obj\Debug\Data Access Layer.csproj.CoreCompileInputs.cache
+D:\programmin\first jorney\To do list app\Data Access Layer\obj\Debug\Data Access Layer.dll
+D:\programmin\first jorney\To do list app\Data Access Layer\obj\Debug\Data Access Layer.pdb

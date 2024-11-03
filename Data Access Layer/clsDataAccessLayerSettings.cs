@@ -8,6 +8,6 @@ namespace Data_Access_Layer
 {
     static internal class clsDataAccessLayerSettings
     {
-        static public string _ConnectionString = "Server = . ; DataBase = ToDoListDB ; User ID = sa ; Password = EslamYasse1";
+        static public string _ConnectionString { get; } = "Server =. ; Database =ToDoListDB; User Id = sa ; Password = Eslamyasse1";
     }
 }

@@ -7,7 +7,50 @@ using System.Data.SqlClient;
 using System.Data;
 namespace Data_Access_Layer
 {
-    internal class clsTaskDataAccess
+    static public class clsTaskDataAccess
     {
+        static public int AddTask( ref string TaskName , ref string TaskDescription ,
+            ref DateTime DeadLine , int CategoryID = 1)
+        {
+            int TaskID = -1;
+            SqlConnection Connection = new SqlConnection(clsDataAccessLayerSettings._ConnectionString);
+            string Query = @"Insert Into Tasks (TaskName , TaskDescription 
+                            , DeadLine , CategoryID )
+                             values
+                             (@TaskName , @TaskDescription , @DeadLine , @CategoryID);
+                              SELECT SCOPE_IDENTITY();      ";
+            SqlCommand Command = new SqlCommand(Query, Connection);
+            Command.Parameters.AddWithValue("@TaskName", TaskName);
+            if(string .IsNullOrEmpty(TaskDescription) )
+            {
+                Command.Parameters.AddWithValue("@TaskDescription", DBNull.Value);
+            }
+            else
+            {
+                Command.Parameters.AddWithValue("@TaskDescription", TaskDescription);
+            }
+            
+            Command.Parameters.AddWithValue("@DeadLine", DeadLine);
+            Command.Parameters.AddWithValue("@CategoryID", CategoryID);
+            try
+            {
+                Connection.Open();
+                object Result = Command.ExecuteScalar();
+                if (Result != null && int.TryParse(Result.ToString() , out int TempID))
+                {
+                    TaskID = TempID;
+                }
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Connection.Close();
+
+            }
+            return TaskID;
+        }
     }
 }

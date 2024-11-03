@@ -1,0 +1,12 @@
+D:\programmin\first jorney\To do list app\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+D:\programmin\first jorney\To do list app\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+D:\programmin\first jorney\To do list app\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+D:\programmin\first jorney\To do list app\WindowsFormsApp1\bin\Debug\Bussiness Layer.dll
+D:\programmin\first jorney\To do list app\WindowsFormsApp1\bin\Debug\Bussiness Layer.pdb
+D:\programmin\first jorney\To do list app\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+D:\programmin\first jorney\To do list app\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+D:\programmin\first jorney\To do list app\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+D:\programmin\first jorney\To do list app\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+D:\programmin\first jorney\To do list app\WindowsFormsApp1\obj\Debug\WindowsF.A1EEDF9B.Up2Date
+D:\programmin\first jorney\To do list app\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+D:\programmin\first jorney\To do list app\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
