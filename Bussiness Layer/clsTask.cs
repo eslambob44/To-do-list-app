@@ -159,5 +159,15 @@ namespace Bussiness_Layer
                 else return false;
             }
         }
+
+        static public bool IsTaskExists(int TaskID)
+        {
+            return clsTaskDataAccess.IsTaskExists(TaskID);
+        }
+
+        static public bool IsTaskExists(string TaskName)
+        {
+            return clsTaskDataAccess.IsTaskExists(TaskName);
+        }
     }
 }
