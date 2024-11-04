@@ -368,5 +368,59 @@ namespace Data_Access_Layer
             }
             return dt;
         }
+
+        static public bool IsTaskExists(int TaskID)
+        {
+            bool IsExists = false;
+            SqlConnection Connection = new SqlConnection(clsDataAccessLayerSettings._ConnectionString);
+            string Query = @"Select IsExists = 1
+                            From Tasks
+                            Where TaskID = @TaskID";
+            SqlCommand Command = new SqlCommand(Query, Connection);
+            Command.Parameters.AddWithValue("@TaskID", TaskID);
+            try
+            {
+
+                Connection.Open();
+                object Result = Command.ExecuteScalar();
+                IsExists = (Result != null);
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Connection.Close();
+            }
+            return IsExists;
+        }
+
+        static public bool IsTaskExists(string TaskName)
+        {
+            bool IsExists = false;
+            SqlConnection Connection = new SqlConnection(clsDataAccessLayerSettings._ConnectionString);
+            string Query = @"Select IsExists = 1
+                            From Tasks
+                            Where TaskName = @TaskName";
+            SqlCommand Command = new SqlCommand(Query, Connection);
+            Command.Parameters.AddWithValue("@TaskName", TaskName);
+            try
+            {
+
+                Connection.Open();
+                object Result = Command.ExecuteScalar();
+                IsExists = (Result != null);
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Connection.Close();
+            }
+            return IsExists;
+        }
     }
 }
