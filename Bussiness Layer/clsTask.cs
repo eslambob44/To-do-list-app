@@ -35,7 +35,7 @@ namespace Bussiness_Layer
             this._Mode = enMode.Update;
         }
 
-        public clsTask()
+        private clsTask()
         {
             _TaskID = default( int );
             this.TaskName = default(string);
