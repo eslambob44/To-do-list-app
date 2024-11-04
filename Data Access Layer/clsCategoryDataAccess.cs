@@ -260,7 +260,7 @@ namespace Data_Access_Layer
             {
                 Connection.Close();
             }
-            return CategoryID
+            return CategoryID;
         }
     }
 }

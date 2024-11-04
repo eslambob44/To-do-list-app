@@ -47,7 +47,7 @@ namespace Bussiness_Layer
             this._Mode = enMode.AddNew;
         }
 
-        public clsTask Find(int TaskID)
+        static public clsTask Find(int TaskID)
         {
             string TaskName=null , TaskDescription = null;
             DateTime BeginningDate = DateTime.Now, DeadLine = DateTime.Now;
@@ -61,7 +61,7 @@ namespace Bussiness_Layer
             else return null;
         }
 
-        public clsTask Find(string TaskName)
+        static public clsTask Find(string TaskName)
         {
             int TaskID = -1;
             string TaskDescription = null;
@@ -76,7 +76,7 @@ namespace Bussiness_Layer
             else return null;
         }
 
-        public clsTask GetAddNewTaskObject()
+        static public clsTask GetAddNewTaskObject()
         { return new clsTask(); }
 
         static public bool Delete(int TaskID)
@@ -122,7 +122,7 @@ namespace Bussiness_Layer
             else return null;
         }
 
-        bool _VerifyFields()
+        private bool _VerifyFields()
         {
             if (string.IsNullOrEmpty(TaskName)) return false;
             if(DeadLine <=BeginningDate) return false;
