@@ -262,5 +262,36 @@ namespace Data_Access_Layer
             }
             return CategoryID;
         }
+
+
+        static public string GetCategoryName(int CategoryID)
+        {
+            string CategoryName = null;
+            SqlConnection Connection = new SqlConnection(clsDataAccessLayerSettings._ConnectionString);
+            string Query = @"Select CategoryName
+                            From Categories
+                            Where CategoryID = @CategoryID";
+            SqlCommand Command = new SqlCommand(Query, Connection);
+            Command.Parameters.AddWithValue("@CategoryID", CategoryID);
+            try
+            {
+
+                Connection.Open();
+                object Result = Command.ExecuteScalar();
+                if (Result != null)
+                {
+                    CategoryName = Result.ToString();   
+                }
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Connection.Close();
+            }
+            return CategoryName;
+        }
     }
 }

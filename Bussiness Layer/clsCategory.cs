@@ -48,6 +48,11 @@ namespace Bussiness_Layer
             return clsCategoryDataAccess.ListCategories();
         }
 
+        static public string GetCategoryName(int CategoryID) 
+        {
+            return clsCategoryDataAccess.GetCategoryName(CategoryID);
+        }
+
 
     }
 }
