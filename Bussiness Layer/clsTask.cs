@@ -113,14 +113,51 @@ namespace Bussiness_Layer
             else return null;
         }
 
-        public static DataTable ListTasksByCategoryAndStatusAndLikeName(string LikeName, int CategoryID , bool IsCompleted)
+        public static DataTable ListTasksByCategoryAndStatusAndLikeName(string LikeName, int CategoryID, bool IsCompleted)
         {
             if (clsCategoryDataAccess.IsCategoryExists(CategoryID))
             {
-                return clsTaskDataAccess.ListTasksByCategoryAndStatusAndLikeName(LikeName, CategoryID , IsCompleted);
+                return clsTaskDataAccess.ListTasksByCategoryAndStatusAndLikeName(LikeName, CategoryID, IsCompleted);
             }
             else return null;
         }
 
+        private bool _Update()
+        {
+            return clsTaskDataAccess.ModifyTask(TaskID, TaskName, TaskDescription, DeadLine, CategoryID, IsCompleted);
+        }
+
+        private bool _AddNew()
+        {
+            int TempID = clsTaskDataAccess.AddTask(TaskName, TaskDescription, DeadLine, CategoryID);
+            if(TempID!=-1)
+            {
+                this._TaskID = TempID;
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
+
+        public bool Save()
+        {
+            if(_Mode == enMode.Update)
+            {
+                return _Update();
+            }
+            else
+            {
+                if (_AddNew())
+                {
+                    _Mode = enMode.Update;
+                    return true;
+                }
+                else return false;
+            }
+        }
     }
 }
