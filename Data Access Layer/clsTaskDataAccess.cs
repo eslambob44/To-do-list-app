@@ -171,6 +171,49 @@ namespace Data_Access_Layer
             return IsFound;
         }
 
+        static public bool FindTaskByName(ref int TaskID,string TaskName, ref string TaskDescription, ref DateTime BegainingDate
+            , ref DateTime DeadLine, ref int CategoryID, ref bool IsCompleted)
+        {
+            bool IsFound = false;
+            SqlConnection Connection = new SqlConnection(clsDataAccessLayerSettings._ConnectionString);
+            string Query = @"Select * From Tasks
+                            Where TaskName = @TaskName";
+            SqlCommand Command = new SqlCommand(Query, Connection);
+            Command.Parameters.AddWithValue("@TaskName", TaskName);
+            try
+            {
+                Connection.Open();
+                SqlDataReader Reader = Command.ExecuteReader();
+                if (Reader.Read())
+                {
+                    IsFound = true;
+                    TaskID = (int)Reader["TaskID"];
+                    if (Reader["TaskDescription"] == DBNull.Value)
+                    {
+                        TaskDescription = null;
+                    }
+                    else
+                    {
+                        TaskDescription = (string)Reader["TaskDescription"];
+                    }
+                    BegainingDate = (DateTime)Reader["BegainingDate"];
+                    DeadLine = (DateTime)Reader["DeadLine"];
+                    CategoryID = (int)Reader["CategoryID"];
+                    IsCompleted = ((int)Reader["IsComplete"] == 1) ? true : false;
+                }
+                Reader.Close();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Connection.Close();
+            }
+            return IsFound;
+        }
+
         static public DataTable ListTasks()
         {
             DataTable dt = new DataTable();
@@ -236,6 +279,74 @@ namespace Data_Access_Layer
             string Query = @"Select * From Tasks
                             Where CategoryID = @CategoryID";
             SqlCommand command = new SqlCommand(Query, Connection);
+            command.Parameters.AddWithValue("@CategoryID", CategoryID);
+            try
+            {
+                Connection.Open();
+                SqlDataReader Reader = command.ExecuteReader();
+                if (Reader.HasRows)
+                {
+                    dt.Load(Reader);
+                }
+                Reader.Close();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Connection.Close();
+            }
+            return dt;
+        }
+
+        public static DataTable ListTasksByCategoryAndStatusAndLikeName(string TaskName
+            , int CategoryID , bool IsCompleted)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection Connection = new SqlConnection(clsDataAccessLayerSettings._ConnectionString);
+            byte IsComplete = (byte)((IsCompleted) ? 1 : 0);
+            string Query = @"Select * From Tasks
+                            Where IsComplete = @IsComplete
+                            And TaskName like '%'+@TaskName+'%'
+                            And CategoryID = @CategoryID";
+            SqlCommand command = new SqlCommand(Query, Connection);
+            command.Parameters.AddWithValue("@IsComplete", IsComplete);
+            command.Parameters.AddWithValue("@TaskName", TaskName);
+            command.Parameters.AddWithValue("@CategoryID", CategoryID);
+            try
+            {
+                Connection.Open();
+                SqlDataReader Reader = command.ExecuteReader();
+                if (Reader.HasRows)
+                {
+                    dt.Load(Reader);
+                }
+                Reader.Close();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Connection.Close();
+            }
+            return dt;
+        }
+
+        public static DataTable ListTasksByCategoryAndLikeName(string TaskName
+            , int CategoryID)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection Connection = new SqlConnection(clsDataAccessLayerSettings._ConnectionString);
+            
+            string Query = @"Select * From Tasks
+                            Where And TaskName like '%'+@TaskName+'%'
+                            And CategoryID = @CategoryID";
+            SqlCommand command = new SqlCommand(Query, Connection);
+            command.Parameters.AddWithValue("@TaskName", TaskName);
             command.Parameters.AddWithValue("@CategoryID", CategoryID);
             try
             {
