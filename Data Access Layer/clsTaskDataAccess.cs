@@ -171,6 +171,49 @@ namespace Data_Access_Layer
             return IsFound;
         }
 
+        static public bool FindTaskByName(ref int TaskID,string TaskName, ref string TaskDescription, ref DateTime BegainingDate
+            , ref DateTime DeadLine, ref int CategoryID, ref bool IsCompleted)
+        {
+            bool IsFound = false;
+            SqlConnection Connection = new SqlConnection(clsDataAccessLayerSettings._ConnectionString);
+            string Query = @"Select * From Tasks
+                            Where TaskName = @TaskName";
+            SqlCommand Command = new SqlCommand(Query, Connection);
+            Command.Parameters.AddWithValue("@TaskName", TaskName);
+            try
+            {
+                Connection.Open();
+                SqlDataReader Reader = Command.ExecuteReader();
+                if (Reader.Read())
+                {
+                    IsFound = true;
+                    TaskID = (int)Reader["TaskID"];
+                    if (Reader["TaskDescription"] == DBNull.Value)
+                    {
+                        TaskDescription = null;
+                    }
+                    else
+                    {
+                        TaskDescription = (string)Reader["TaskDescription"];
+                    }
+                    BegainingDate = (DateTime)Reader["BegainingDate"];
+                    DeadLine = (DateTime)Reader["DeadLine"];
+                    CategoryID = (int)Reader["CategoryID"];
+                    IsCompleted = ((int)Reader["IsComplete"] == 1) ? true : false;
+                }
+                Reader.Close();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Connection.Close();
+            }
+            return IsFound;
+        }
+
         static public DataTable ListTasks()
         {
             DataTable dt = new DataTable();
