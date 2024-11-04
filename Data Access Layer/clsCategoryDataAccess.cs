@@ -178,5 +178,59 @@ namespace Data_Access_Layer
             }
             return dt;
         }
+
+        static public bool IsCategoryExists(int CategoryID)
+        {
+            bool IsExists = false;  
+            SqlConnection Connection = new SqlConnection(clsDataAccessLayerSettings._ConnectionString);
+            string Query = @"Select IsExists = 1
+                            From Categories
+                            Where CategoryID = @CategoryID";
+            SqlCommand Command = new SqlCommand(Query, Connection);
+            Command.Parameters.AddWithValue("@CategoryID", CategoryID);
+            try
+            {
+
+                Connection.Open();
+                object Result = Command.ExecuteScalar();
+                IsExists = (Result != null);
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Connection.Close();
+            }
+            return IsExists;
+        }
+
+        static public bool IsCategoryExists(string CategoryName)
+        {
+            bool IsExists = false;
+            SqlConnection Connection = new SqlConnection(clsDataAccessLayerSettings._ConnectionString);
+            string Query = @"Select IsExists = 1
+                            From Categories
+                            Where CategoryName = @CategoryName";
+            SqlCommand Command = new SqlCommand(Query, Connection);
+            Command.Parameters.AddWithValue("@CategoryName", CategoryName);
+            try
+            {
+
+                Connection.Open();
+                object Result = Command.ExecuteScalar();
+                IsExists = (Result != null);
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Connection.Close();
+            }
+            return IsExists;
+        }
     }
 }
