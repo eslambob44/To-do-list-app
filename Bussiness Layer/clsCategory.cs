@@ -10,8 +10,6 @@ namespace Bussiness_Layer
     static public class clsCategory
     {
 
-        static int CategoryID = -1;
-
         static public bool AddCategory(string CategoryName)
         {
             return clsCategoryDataAccess.InsertCategory(CategoryName) !=-1;
@@ -20,8 +18,7 @@ namespace Bussiness_Layer
         static private int _GetCategoryID(string CategoryName)
         {
             
-            clsCategoryDataAccess.FindCategoryByName(CategoryName,ref CategoryID);
-            return CategoryID;
+            return clsCategoryDataAccess.GetCategoryIDByName(CategoryName);
 
         }
 
