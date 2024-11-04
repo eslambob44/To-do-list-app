@@ -22,3 +22,5 @@ D:\programmin\first jorney\To do list app\To Do List Disktop App\obj\Debug\Windo
 D:\programmin\first jorney\To do list app\To Do List Disktop App\obj\Debug\WindowsF.A1EEDF9B.Up2Date
 D:\programmin\first jorney\To do list app\To Do List Disktop App\obj\Debug\WindowsFormsApp1.exe
 D:\programmin\first jorney\To do list app\To Do List Disktop App\obj\Debug\WindowsFormsApp1.pdb
+D:\programmin\first jorney\To do list app\To Do List Disktop App\bin\Debug\Data Access Layer.dll
+D:\programmin\first jorney\To do list app\To Do List Disktop App\bin\Debug\Data Access Layer.pdb

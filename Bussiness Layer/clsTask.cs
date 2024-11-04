@@ -35,7 +35,7 @@ namespace Bussiness_Layer
             this._Mode = enMode.Update;
         }
 
-        public clsTask()
+        private clsTask()
         {
             _TaskID = default( int );
             this.TaskName = default(string);
@@ -47,7 +47,7 @@ namespace Bussiness_Layer
             this._Mode = enMode.AddNew;
         }
 
-        public clsTask Find(int TaskID)
+        static public clsTask Find(int TaskID)
         {
             string TaskName=null , TaskDescription = null;
             DateTime BeginningDate = DateTime.Now, DeadLine = DateTime.Now;
@@ -61,7 +61,7 @@ namespace Bussiness_Layer
             else return null;
         }
 
-        public clsTask Find(string TaskName)
+        static public clsTask Find(string TaskName)
         {
             int TaskID = -1;
             string TaskDescription = null;
@@ -76,7 +76,7 @@ namespace Bussiness_Layer
             else return null;
         }
 
-        public clsTask GetAddNewTaskObject()
+        static public clsTask GetAddNewTaskObject()
         { return new clsTask(); }
 
         static public bool Delete(int TaskID)
@@ -91,7 +91,7 @@ namespace Bussiness_Layer
         
         static public DataTable ListTasksByCategory(int CategoryID)
         {
-            if (clsCategoryDataAccess.IsCategoryExists(CategoryID))
+            if (clsCategory.IsCategoryExists(CategoryID))
             {
                 return clsTaskDataAccess.ListTasksByCategory(CategoryID);
             }
@@ -106,7 +106,7 @@ namespace Bussiness_Layer
 
         public static DataTable ListTasksByCategoryAndLikeName(int CategoryID, string LikeName)
         {
-            if (clsCategoryDataAccess.IsCategoryExists(CategoryID))
+            if (clsCategory.IsCategoryExists(CategoryID))
             {
                 return clsTaskDataAccess.ListTasksByCategoryAndLikeName(LikeName, CategoryID);
             }
@@ -115,13 +115,20 @@ namespace Bussiness_Layer
 
         public static DataTable ListTasksByCategoryAndStatusAndLikeName(string LikeName, int CategoryID, bool IsCompleted)
         {
-            if (clsCategoryDataAccess.IsCategoryExists(CategoryID))
+            if (clsCategory.IsCategoryExists(CategoryID))
             {
                 return clsTaskDataAccess.ListTasksByCategoryAndStatusAndLikeName(LikeName, CategoryID, IsCompleted);
             }
             else return null;
         }
 
+        private bool _VerifyFields()
+        {
+            if (string.IsNullOrEmpty(TaskName)) return false;
+            if(DeadLine <=BeginningDate) return false;
+            if(!clsCategory.IsCategoryExists(CategoryID)) return false;
+            return true;
+        }
         private bool _Update()
         {
             return clsTaskDataAccess.ModifyTask(TaskID, TaskName, TaskDescription, DeadLine, CategoryID, IsCompleted);
@@ -129,6 +136,7 @@ namespace Bussiness_Layer
 
         private bool _AddNew()
         {
+
             int TempID = clsTaskDataAccess.AddTask(TaskName, TaskDescription, DeadLine, CategoryID);
             if(TempID!=-1)
             {
@@ -145,7 +153,10 @@ namespace Bussiness_Layer
 
         public bool Save()
         {
-            if(_Mode == enMode.Update)
+
+            if (!_VerifyFields()) return false;
+
+            if (_Mode == enMode.Update)
             {
                 return _Update();
             }
