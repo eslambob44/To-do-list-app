@@ -150,5 +150,33 @@ namespace Data_Access_Layer
             }
             return IsExists;
         }
+
+        static public DataTable ListCategories()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection Connection = new SqlConnection(clsDataAccessLayerSettings._ConnectionString);
+            string Query = @"Select * From Categories";
+            SqlCommand Command = new SqlCommand(Query, Connection);
+            try
+            {
+
+                Connection.Open();
+                SqlDataReader Reader = Command.ExecuteReader();
+                if (Reader.HasRows)
+                {
+                    dt.Load (Reader);
+                }
+                Reader.Close();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Connection.Close();
+            }
+            return dt;
+        }
     }
 }
