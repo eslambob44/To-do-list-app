@@ -84,6 +84,43 @@ namespace Bussiness_Layer
             return clsTaskDataAccess.DeleteTask(TaskID);
         }
 
+        static public DataTable ListTasks()
+        {
+            return clsTaskDataAccess.ListTasks();
+        }
+        
+        static public DataTable ListTasksByCategory(int CategoryID)
+        {
+            if (clsCategoryDataAccess.IsCategoryExists(CategoryID))
+            {
+                return clsTaskDataAccess.ListTasksByCategory(CategoryID);
+            }
+            else return null;
+
+        }
+
+        static public DataTable ListTasksByStatus(bool IsCompleted)
+        {
+            return clsTaskDataAccess.ListTasksByStatus(IsCompleted);
+        }
+
+        public static DataTable ListTasksByCategoryAndLikeName(int CategoryID, string LikeName)
+        {
+            if (clsCategoryDataAccess.IsCategoryExists(CategoryID))
+            {
+                return clsTaskDataAccess.ListTasksByCategoryAndLikeName(LikeName, CategoryID);
+            }
+            else return null;
+        }
+
+        public static DataTable ListTasksByCategoryAndStatusAndLikeName(string LikeName, int CategoryID , bool IsCompleted)
+        {
+            if (clsCategoryDataAccess.IsCategoryExists(CategoryID))
+            {
+                return clsTaskDataAccess.ListTasksByCategoryAndStatusAndLikeName(LikeName, CategoryID , IsCompleted);
+            }
+            else return null;
+        }
 
     }
 }
