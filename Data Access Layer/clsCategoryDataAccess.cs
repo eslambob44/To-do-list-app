@@ -89,5 +89,66 @@ namespace Data_Access_Layer
             }
             return RowsAffected > 0;
         }
+
+        static public bool FindCategoryByID(int CategoryID , ref string CategoryName) 
+        {
+            bool IsExists = false;
+            SqlConnection Connection = new SqlConnection(clsDataAccessLayerSettings._ConnectionString);
+            string Query = @"Select * From Categories
+                            Where CategoryID = @CategoryID"; ;
+            SqlCommand Command = new SqlCommand(Query, Connection);
+            Command.Parameters.AddWithValue("@CategoryID", CategoryID);
+            try
+            {
+                Connection.Open();
+                SqlDataReader Reader = Command.ExecuteReader();
+                if(Reader.Read())
+                {
+                    CategoryName = (string)Reader["CategoryName"];
+                    IsExists=true;
+                }
+                Reader.Close();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Connection.Close ();    
+            }
+            return IsExists;
+        }
+
+        static public bool FindCategoryByName( string CategoryName , ref int CategoryID)
+        {
+            bool IsExists = false;
+            SqlConnection Connection = new SqlConnection(clsDataAccessLayerSettings._ConnectionString);
+            string Query = @"Select * From Categories
+                            Where CategoryName = @CategoryName";
+            SqlCommand Command = new SqlCommand(Query, Connection);
+            Command.Parameters.AddWithValue("@CategoryName", CategoryName);
+            try
+            {
+
+                Connection.Open();
+                SqlDataReader Reader = Command.ExecuteReader();
+                if (Reader.Read())
+                {
+                    CategoryID = (int)Reader["CategoryID"];
+                    IsExists = true;
+                }
+                Reader.Close();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Connection.Close();
+            }
+            return IsExists;
+        }
     }
 }
