@@ -39,5 +39,31 @@ namespace Data_Access_Layer
             }
             return CategoryID;
         }
+
+        static public bool ModifyCategory(int CategoryID ,string CategoryName)
+        {
+            int RowsAffected = 0;
+            SqlConnection Connection = new SqlConnection(clsDataAccessLayerSettings._ConnectionString);
+            string Query = @"Update Categories
+                            set CategoryName = @CategoryName
+                            where CategoryID = @CategoryID;";
+            SqlCommand Command = new SqlCommand(Query, Connection);
+            Command.Parameters.AddWithValue("@CategoryID" , CategoryID);
+            Command.Parameters.AddWithValue("@CategoryName", CategoryName);
+            try
+            {
+                Connection.Open();
+                RowsAffected = Command.ExecuteNonQuery();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Connection.Close();
+            }
+            return RowsAffected>0;
+        }
     }
 }
