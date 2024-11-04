@@ -65,5 +65,29 @@ namespace Data_Access_Layer
             }
             return RowsAffected>0;
         }
+
+        static public bool DeleteCategory(int CategoryID)
+        {
+            int RowsAffected = 0;
+            SqlConnection Connection = new SqlConnection(clsDataAccessLayerSettings._ConnectionString);
+            string Query = @"Delete Categories
+                            where CategoryID = @CategoryID;";
+            SqlCommand Command = new SqlCommand(Query, Connection);
+            Command.Parameters.AddWithValue("@CategoryID", CategoryID);
+            try
+            {
+                Connection.Open();
+                RowsAffected = Command.ExecuteNonQuery();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Connection.Close();
+            }
+            return RowsAffected > 0;
+        }
     }
 }
