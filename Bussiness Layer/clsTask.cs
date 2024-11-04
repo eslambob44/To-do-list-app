@@ -91,7 +91,7 @@ namespace Bussiness_Layer
         
         static public DataTable ListTasksByCategory(int CategoryID)
         {
-            if (clsCategoryDataAccess.IsCategoryExists(CategoryID))
+            if (clsCategory.IsCategoryExists(CategoryID))
             {
                 return clsTaskDataAccess.ListTasksByCategory(CategoryID);
             }
@@ -106,7 +106,7 @@ namespace Bussiness_Layer
 
         public static DataTable ListTasksByCategoryAndLikeName(int CategoryID, string LikeName)
         {
-            if (clsCategoryDataAccess.IsCategoryExists(CategoryID))
+            if (clsCategory.IsCategoryExists(CategoryID))
             {
                 return clsTaskDataAccess.ListTasksByCategoryAndLikeName(LikeName, CategoryID);
             }
@@ -115,7 +115,7 @@ namespace Bussiness_Layer
 
         public static DataTable ListTasksByCategoryAndStatusAndLikeName(string LikeName, int CategoryID, bool IsCompleted)
         {
-            if (clsCategoryDataAccess.IsCategoryExists(CategoryID))
+            if (clsCategory.IsCategoryExists(CategoryID))
             {
                 return clsTaskDataAccess.ListTasksByCategoryAndStatusAndLikeName(LikeName, CategoryID, IsCompleted);
             }
@@ -126,7 +126,7 @@ namespace Bussiness_Layer
         {
             if (string.IsNullOrEmpty(TaskName)) return false;
             if(DeadLine <=BeginningDate) return false;
-            if(!clsCategoryDataAccess.IsCategoryExists(CategoryID)) return false;
+            if(!clsCategory.IsCategoryExists(CategoryID)) return false;
             return true;
         }
         private bool _Update()
