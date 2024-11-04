@@ -232,5 +232,35 @@ namespace Data_Access_Layer
             }
             return IsExists;
         }
+
+        static public int GetCategoryIDByName(string CategoryName)
+        {
+            int CategoryID = -1;
+            SqlConnection Connection = new SqlConnection(clsDataAccessLayerSettings._ConnectionString);
+            string Query = @"Select CategoryID
+                            From Categories
+                            Where CategoryName = @CategoryName";
+            SqlCommand Command = new SqlCommand(Query, Connection);
+            Command.Parameters.AddWithValue("@CategoryName", CategoryName);
+            try
+            {
+
+                Connection.Open();
+                object Result = Command.ExecuteScalar();
+                if(Result != null && int.TryParse(Result.ToString() , out int TempID))
+                {
+                    CategoryID = TempID;
+                }
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Connection.Close();
+            }
+            return CategoryID
+        }
     }
 }
