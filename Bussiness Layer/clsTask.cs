@@ -79,6 +79,11 @@ namespace Bussiness_Layer
         public clsTask GetAddNewTaskObject()
         { return new clsTask(); }
 
+        static public bool Delete(int TaskID)
+        {
+            return clsTaskDataAccess.DeleteTask(TaskID);
+        }
+
 
     }
 }
