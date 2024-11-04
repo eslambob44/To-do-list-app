@@ -122,6 +122,13 @@ namespace Bussiness_Layer
             else return null;
         }
 
+        bool _VerifyFields()
+        {
+            if (string.IsNullOrEmpty(TaskName)) return false;
+            if(DeadLine <=BeginningDate) return false;
+            if(!clsCategoryDataAccess.IsCategoryExists(CategoryID)) return false;
+            return true;
+        }
         private bool _Update()
         {
             return clsTaskDataAccess.ModifyTask(TaskID, TaskName, TaskDescription, DeadLine, CategoryID, IsCompleted);
@@ -129,6 +136,7 @@ namespace Bussiness_Layer
 
         private bool _AddNew()
         {
+
             int TempID = clsTaskDataAccess.AddTask(TaskName, TaskDescription, DeadLine, CategoryID);
             if(TempID!=-1)
             {
@@ -145,7 +153,10 @@ namespace Bussiness_Layer
 
         public bool Save()
         {
-            if(_Mode == enMode.Update)
+
+            if (!_VerifyFields()) return false;
+
+            if (_Mode == enMode.Update)
             {
                 return _Update();
             }
