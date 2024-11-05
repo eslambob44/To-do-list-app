@@ -118,8 +118,9 @@
             this.btnShowAll.Name = "btnShowAll";
             this.btnShowAll.Size = new System.Drawing.Size(152, 61);
             this.btnShowAll.TabIndex = 1;
+            this.btnShowAll.Tag = "-1";
             this.btnShowAll.Text = "All";
-            this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
+            this.btnShowAll.Click += new System.EventHandler(this.btnShowByStatus_Click);
             // 
             // btnShowPending
             // 

@@ -14,9 +14,12 @@ namespace WindowsFormsApp1
 {
     public partial class frmMain : Form
     {
-
+        enum enStatus { Pending = 0 , Completed = 1 , All =-1}
         DataTable _TasksTable = new DataTable();
         DataView _TasksView = new DataView();
+        string _Category = "Personal";
+        enStatus _Status = enStatus.All;
+        
         void _PrepareTasksTableColumns()
         {
             _TasksTable.Columns.Add("Name",typeof(string));
@@ -24,11 +27,14 @@ namespace WindowsFormsApp1
             _TasksTable.Columns.Add("Beginning Date" , typeof(DateTime));
             _TasksTable.Columns.Add("Dead Line", typeof(DateTime));
             _TasksTable.Columns.Add("Category" ,  typeof(string));
-            _TasksTable.Columns.Add("Is Completed" , typeof(bool));
+            _TasksTable.Columns.Add("IsCompleted" , typeof(bool));
         }
         public frmMain()
         {
             InitializeComponent();
+            _PrepareTasksTableColumns();
+            _ConvertTasksTableIntodgvTable(clsTask.ListTasks());
+            _TasksView = _TasksTable.DefaultView;
         }
 
         void _ConvertTasksTableIntodgvTable(DataTable dt)
@@ -59,22 +65,21 @@ namespace WindowsFormsApp1
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            _PrepareTasksTableColumns();
-            _ConvertTasksTableIntodgvTable(clsTask.ListTasks());
-            _TasksView = _TasksTable.DefaultView;
+            
             _LoadDataGridView();
             btnShowAll.PerformClick();
         }
 
-        void _ApplyFilterInDGV()
+        void _ApplyFilterInDGV(string Name , string Category , enStatus Status)
         {
-            string Filter = "'%" + txtSearch.Text + "%'";
-            _TasksView.RowFilter = "Name like " + Filter;
+            string StatusFilter = (Status == enStatus.All)?"" : "and IsCompleted = " + (int)Status;
+            string Filter = $"Name like '%{Name}%' and Category = '{Category}' {StatusFilter} ";
+            _TasksView.RowFilter = Filter;
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            _ApplyFilterInDGV();
+            _ApplyFilterInDGV(txtSearch.Text,_Category,_Status);
         }
 
         void _ChangeStatusColor(Guna2Button btn)
@@ -85,32 +90,13 @@ namespace WindowsFormsApp1
             btn.FillColor = btn.FocusedColor;
         }
 
-        private void btnShowAll_Click(object sender, EventArgs e)
-        {
-            _ChangeStatusColor(sender as Guna2Button);
-            int CategoryID = 1;
-            DataTable TempTable = clsTask.ListTasksByCategory(1);
-            if (TempTable !=null)
-            {
-                _ConvertTasksTableIntodgvTable(TempTable);
-                dgvTasks.Refresh();
-            }
-        }
-
-
-
         private void btnShowByStatus_Click(object sender, EventArgs e)
         {
             Guna2Button btn = (Guna2Button)sender;
             _ChangeStatusColor(btn);
-            bool Status = (int.Parse(btn.Tag.ToString()) ==0)?false:true;
-            int CategoryID = 1;
-            DataTable TempTable = clsTask.ListTasksByCategoryAndStatus(1,Status);
-            if (TempTable != null)
-            {
-                 _ConvertTasksTableIntodgvTable(TempTable);
-                dgvTasks.Refresh();
-            }
+            _Status = (enStatus)(int.Parse(btn.Tag.ToString()));
+            _ApplyFilterInDGV(txtSearch.Text,_Category, _Status);
+            
         }
     }
 }
