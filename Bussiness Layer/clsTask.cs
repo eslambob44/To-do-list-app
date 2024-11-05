@@ -122,6 +122,15 @@ namespace Bussiness_Layer
             else return null;
         }
 
+        public static DataTable ListTasksByCategoryAndStatus(int CategoryID, bool IsCompleted)
+        {
+            if (clsCategory.IsCategoryExists(CategoryID))
+            {
+                return clsTaskDataAccess.ListTasksByCategoryAndStatus( CategoryID, IsCompleted);
+            }
+            else return null;
+        }
+
         private bool _VerifyFields()
         {
             if (string.IsNullOrEmpty(TaskName)) return false;
