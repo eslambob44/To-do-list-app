@@ -1,4 +1,5 @@
 ﻿using Bussiness_Layer;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -62,6 +63,54 @@ namespace WindowsFormsApp1
             _ConvertTasksTableIntodgvTable(clsTask.ListTasks());
             _TasksView = _TasksTable.DefaultView;
             _LoadDataGridView();
+            btnShowAll.PerformClick();
+        }
+
+        void _ApplyFilterInDGV()
+        {
+            string Filter = "'%" + txtSearch.Text + "%'";
+            _TasksView.RowFilter = "Name like " + Filter;
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            _ApplyFilterInDGV();
+        }
+
+        void _ChangeStatusColor(Guna2Button btn)
+        {
+            btnShowAll.FillColor = Color.DarkGray;
+            btnShowPending.FillColor = Color.DarkGray;
+            btnShowCompleted.FillColor = Color.DarkGray;
+            btn.FillColor = btn.FocusedColor;
+        }
+
+        private void btnShowAll_Click(object sender, EventArgs e)
+        {
+            _ChangeStatusColor(sender as Guna2Button);
+            int CategoryID = 1;
+            DataTable TempTable = clsTask.ListTasksByCategory(1);
+            if (TempTable !=null)
+            {
+                _ConvertTasksTableIntodgvTable(TempTable);
+                dgvTasks.Refresh();
+            }
+        }
+
+
+
+        private void btnShowByStatus_Click(object sender, EventArgs e)
+        {
+            Guna2Button btn = (Guna2Button)sender;
+            _ChangeStatusColor(btn);
+            bool Status = (int.Parse(btn.Tag.ToString()) ==0)?false:true;
+            int CategoryID = 1;
+            DataTable TempTable = clsTask.ListTasksByCategoryAndStatus(1,Status);
+            if (TempTable != null)
+            {
+                 _ConvertTasksTableIntodgvTable(TempTable);
+                dgvTasks.Refresh();
+            }
         }
     }
 }
