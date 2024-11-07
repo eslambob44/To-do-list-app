@@ -60,7 +60,7 @@
             this.dgvTasks.AllowUserToResizeColumns = false;
             this.dgvTasks.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvTasks.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
@@ -68,7 +68,7 @@
             this.dgvTasks.BackgroundColor = System.Drawing.Color.Gray;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Gray;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -78,20 +78,21 @@
             this.dgvTasks.ContextMenuStrip = this.contextMenuStrip1;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvTasks.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvTasks.GridColor = System.Drawing.Color.Black;
-            this.dgvTasks.Location = new System.Drawing.Point(148, 110);
+            this.dgvTasks.Location = new System.Drawing.Point(166, 138);
+            this.dgvTasks.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvTasks.MultiSelect = false;
             this.dgvTasks.Name = "dgvTasks";
             this.dgvTasks.ReadOnly = true;
             this.dgvTasks.RowHeadersVisible = false;
             this.dgvTasks.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dgvTasks.Size = new System.Drawing.Size(828, 322);
+            this.dgvTasks.Size = new System.Drawing.Size(932, 402);
             this.dgvTasks.TabIndex = 0;
             this.dgvTasks.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvTasks.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -156,9 +157,10 @@
             this.btnShowAll.FillColor = System.Drawing.Color.DarkGray;
             this.btnShowAll.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.btnShowAll.ForeColor = System.Drawing.Color.White;
-            this.btnShowAll.Location = new System.Drawing.Point(0, 110);
+            this.btnShowAll.Location = new System.Drawing.Point(0, 138);
+            this.btnShowAll.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnShowAll.Name = "btnShowAll";
-            this.btnShowAll.Size = new System.Drawing.Size(152, 61);
+            this.btnShowAll.Size = new System.Drawing.Size(171, 76);
             this.btnShowAll.TabIndex = 1;
             this.btnShowAll.Tag = "-1";
             this.btnShowAll.Text = "All";
@@ -173,9 +175,10 @@
             this.btnShowPending.FillColor = System.Drawing.Color.DarkGray;
             this.btnShowPending.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.btnShowPending.ForeColor = System.Drawing.Color.White;
-            this.btnShowPending.Location = new System.Drawing.Point(0, 166);
+            this.btnShowPending.Location = new System.Drawing.Point(0, 208);
+            this.btnShowPending.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnShowPending.Name = "btnShowPending";
-            this.btnShowPending.Size = new System.Drawing.Size(152, 61);
+            this.btnShowPending.Size = new System.Drawing.Size(171, 76);
             this.btnShowPending.TabIndex = 2;
             this.btnShowPending.Tag = "0";
             this.btnShowPending.Text = "Pending";
@@ -190,9 +193,10 @@
             this.btnShowCompleted.FillColor = System.Drawing.Color.DarkGray;
             this.btnShowCompleted.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.btnShowCompleted.ForeColor = System.Drawing.Color.White;
-            this.btnShowCompleted.Location = new System.Drawing.Point(0, 223);
+            this.btnShowCompleted.Location = new System.Drawing.Point(0, 279);
+            this.btnShowCompleted.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnShowCompleted.Name = "btnShowCompleted";
-            this.btnShowCompleted.Size = new System.Drawing.Size(152, 61);
+            this.btnShowCompleted.Size = new System.Drawing.Size(171, 76);
             this.btnShowCompleted.TabIndex = 3;
             this.btnShowCompleted.Tag = "1";
             this.btnShowCompleted.Text = "Completed";
@@ -201,7 +205,7 @@
             // txtSearch
             // 
             this.txtSearch.AutoRoundedCorners = true;
-            this.txtSearch.BorderRadius = 13;
+            this.txtSearch.BorderRadius = 16;
             this.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSearch.DefaultText = "";
             this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -211,12 +215,13 @@
             this.txtSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSearch.Location = new System.Drawing.Point(231, 40);
+            this.txtSearch.Location = new System.Drawing.Point(260, 50);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PasswordChar = '\0';
             this.txtSearch.PlaceholderText = "Task name";
             this.txtSearch.SelectedText = "";
-            this.txtSearch.Size = new System.Drawing.Size(183, 28);
+            this.txtSearch.Size = new System.Drawing.Size(206, 35);
             this.txtSearch.TabIndex = 4;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -225,7 +230,7 @@
             this.lblSearch.AutoSize = true;
             this.lblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSearch.ForeColor = System.Drawing.Color.White;
-            this.lblSearch.Location = new System.Drawing.Point(155, 44);
+            this.lblSearch.Location = new System.Drawing.Point(174, 55);
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Size = new System.Drawing.Size(70, 24);
             this.lblSearch.TabIndex = 5;
@@ -234,17 +239,18 @@
             // btnAddNew
             // 
             this.btnAddNew.AutoRoundedCorners = true;
-            this.btnAddNew.BorderRadius = 21;
+            this.btnAddNew.BorderRadius = 27;
             this.btnAddNew.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAddNew.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAddNew.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnAddNew.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnAddNew.FillColor = System.Drawing.Color.DarkGray;
-            this.btnAddNew.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnAddNew.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddNew.ForeColor = System.Drawing.Color.White;
-            this.btnAddNew.Location = new System.Drawing.Point(633, 32);
+            this.btnAddNew.Location = new System.Drawing.Point(712, 40);
+            this.btnAddNew.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(180, 45);
+            this.btnAddNew.Size = new System.Drawing.Size(202, 56);
             this.btnAddNew.TabIndex = 17;
             this.btnAddNew.Text = "Add new task";
             this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
@@ -258,9 +264,10 @@
             this.btnTimer.FillColor = System.Drawing.Color.DarkGray;
             this.btnTimer.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.btnTimer.ForeColor = System.Drawing.Color.White;
-            this.btnTimer.Location = new System.Drawing.Point(0, 278);
+            this.btnTimer.Location = new System.Drawing.Point(0, 348);
+            this.btnTimer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnTimer.Name = "btnTimer";
-            this.btnTimer.Size = new System.Drawing.Size(152, 61);
+            this.btnTimer.Size = new System.Drawing.Size(171, 76);
             this.btnTimer.TabIndex = 19;
             this.btnTimer.Tag = "1";
             this.btnTimer.Text = "Timer";
@@ -269,18 +276,19 @@
             // btnRemoveTasks
             // 
             this.btnRemoveTasks.AutoRoundedCorners = true;
-            this.btnRemoveTasks.BorderRadius = 21;
+            this.btnRemoveTasks.BorderRadius = 27;
             this.btnRemoveTasks.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnRemoveTasks.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnRemoveTasks.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnRemoveTasks.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnRemoveTasks.FillColor = System.Drawing.Color.DarkGray;
-            this.btnRemoveTasks.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnRemoveTasks.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnRemoveTasks.ForeColor = System.Drawing.Color.White;
             this.btnRemoveTasks.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoveTasks.Image")));
-            this.btnRemoveTasks.Location = new System.Drawing.Point(834, 32);
+            this.btnRemoveTasks.Location = new System.Drawing.Point(938, 40);
+            this.btnRemoveTasks.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRemoveTasks.Name = "btnRemoveTasks";
-            this.btnRemoveTasks.Size = new System.Drawing.Size(131, 45);
+            this.btnRemoveTasks.Size = new System.Drawing.Size(147, 56);
             this.btnRemoveTasks.TabIndex = 18;
             this.btnRemoveTasks.Text = "Remave Tasks";
             this.btnRemoveTasks.Click += new System.EventHandler(this.btnRemoveTasks_Click);
@@ -289,18 +297,19 @@
             // 
             this.pbIcon.Image = global::WindowsFormsApp1.Properties.Resources.To_do_list;
             this.pbIcon.Location = new System.Drawing.Point(0, 0);
+            this.pbIcon.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pbIcon.Name = "pbIcon";
-            this.pbIcon.Size = new System.Drawing.Size(152, 104);
+            this.pbIcon.Size = new System.Drawing.Size(171, 130);
             this.pbIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbIcon.TabIndex = 6;
             this.pbIcon.TabStop = false;
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(977, 432);
+            this.ClientSize = new System.Drawing.Size(1099, 540);
             this.Controls.Add(this.dgvTasks);
             this.Controls.Add(this.btnTimer);
             this.Controls.Add(this.btnRemoveTasks);
@@ -311,9 +320,9 @@
             this.Controls.Add(this.btnShowCompleted);
             this.Controls.Add(this.btnShowPending);
             this.Controls.Add(this.btnShowAll);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmMain";
             this.Text = "To do list";
             this.Load += new System.EventHandler(this.frmMain_Load);

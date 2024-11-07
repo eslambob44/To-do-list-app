@@ -137,7 +137,7 @@
             this.dtpDeadLine.Checked = true;
             this.dtpDeadLine.CustomFormat = "yyyy-MMMM-dd hh:mm tt";
             this.dtpDeadLine.FillColor = System.Drawing.Color.DarkGray;
-            this.dtpDeadLine.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtpDeadLine.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDeadLine.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(221)))));
             this.dtpDeadLine.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDeadLine.Location = new System.Drawing.Point(113, 318);
