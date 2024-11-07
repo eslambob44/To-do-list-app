@@ -189,5 +189,10 @@ namespace Bussiness_Layer
         {
             return clsTaskDataAccess.IsTaskExists(TaskName);
         }
+
+        static public void DeleteAllTasks()
+        {
+            clsTaskDataAccess.DeleteAllTasks();
+        }
     }
 }

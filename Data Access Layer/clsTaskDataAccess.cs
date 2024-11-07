@@ -455,5 +455,25 @@ namespace Data_Access_Layer
             }
             return IsExists;
         }
+
+        static public void DeleteAllTasks()
+        {
+            SqlConnection Connection = new SqlConnection(clsDataAccessLayerSettings._ConnectionString);
+            string Query = "Truncate Table Tasks";
+            SqlCommand Command = new SqlCommand(Query,Connection);
+            try
+            {
+                Connection.Open();
+                Command.ExecuteNonQuery();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Connection.Close();
+            }
+        }
     }
 }
