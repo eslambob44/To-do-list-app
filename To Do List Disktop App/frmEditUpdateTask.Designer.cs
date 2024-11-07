@@ -39,7 +39,6 @@
             this.dtpDeadLine = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.lblCategory = new System.Windows.Forms.Label();
             this.cbCategories = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.chkIsCompleted = new Guna.UI2.WinForms.Guna2CheckBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -50,7 +49,7 @@
             this.lblAddEdit.AutoSize = true;
             this.lblAddEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAddEdit.ForeColor = System.Drawing.Color.White;
-            this.lblAddEdit.Location = new System.Drawing.Point(386, 34);
+            this.lblAddEdit.Location = new System.Drawing.Point(183, 22);
             this.lblAddEdit.Name = "lblAddEdit";
             this.lblAddEdit.Size = new System.Drawing.Size(155, 24);
             this.lblAddEdit.TabIndex = 6;
@@ -59,7 +58,7 @@
             // txtTaskName
             // 
             this.txtTaskName.AutoRoundedCorners = true;
-            this.txtTaskName.BorderRadius = 13;
+            this.txtTaskName.BorderRadius = 16;
             this.txtTaskName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTaskName.DefaultText = "";
             this.txtTaskName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -69,12 +68,12 @@
             this.txtTaskName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTaskName.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.txtTaskName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTaskName.Location = new System.Drawing.Point(163, 147);
+            this.txtTaskName.Location = new System.Drawing.Point(120, 126);
             this.txtTaskName.Name = "txtTaskName";
             this.txtTaskName.PasswordChar = '\0';
             this.txtTaskName.PlaceholderText = "";
             this.txtTaskName.SelectedText = "";
-            this.txtTaskName.Size = new System.Drawing.Size(183, 28);
+            this.txtTaskName.Size = new System.Drawing.Size(280, 34);
             this.txtTaskName.TabIndex = 7;
             this.txtTaskName.Validating += new System.ComponentModel.CancelEventHandler(this.txtTaskName_Validating);
             // 
@@ -83,18 +82,18 @@
             this.lblTask.AutoSize = true;
             this.lblTask.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTask.ForeColor = System.Drawing.Color.White;
-            this.lblTask.Location = new System.Drawing.Point(94, 151);
+            this.lblTask.Location = new System.Drawing.Point(109, 85);
             this.lblTask.Name = "lblTask";
-            this.lblTask.Size = new System.Drawing.Size(50, 24);
+            this.lblTask.Size = new System.Drawing.Size(106, 24);
             this.lblTask.TabIndex = 8;
-            this.lblTask.Text = "Task";
+            this.lblTask.Text = "Task Name";
             // 
             // lblDescription
             // 
             this.lblDescription.AutoSize = true;
             this.lblDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescription.ForeColor = System.Drawing.Color.White;
-            this.lblDescription.Location = new System.Drawing.Point(40, 227);
+            this.lblDescription.Location = new System.Drawing.Point(109, 367);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(104, 24);
             this.lblDescription.TabIndex = 9;
@@ -113,14 +112,13 @@
             this.txtDescription.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDescription.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.txtDescription.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDescription.Location = new System.Drawing.Point(163, 198);
+            this.txtDescription.Location = new System.Drawing.Point(113, 415);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.PasswordChar = '\0';
             this.txtDescription.PlaceholderText = "Optinal";
-            this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtDescription.SelectedText = "";
-            this.txtDescription.Size = new System.Drawing.Size(237, 75);
+            this.txtDescription.Size = new System.Drawing.Size(287, 75);
             this.txtDescription.TabIndex = 10;
             // 
             // lblDeadLine
@@ -128,7 +126,7 @@
             this.lblDeadLine.AutoSize = true;
             this.lblDeadLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDeadLine.ForeColor = System.Drawing.Color.White;
-            this.lblDeadLine.Location = new System.Drawing.Point(40, 312);
+            this.lblDeadLine.Location = new System.Drawing.Point(109, 273);
             this.lblDeadLine.Name = "lblDeadLine";
             this.lblDeadLine.Size = new System.Drawing.Size(91, 24);
             this.lblDeadLine.TabIndex = 11;
@@ -142,12 +140,12 @@
             this.dtpDeadLine.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpDeadLine.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(221)))));
             this.dtpDeadLine.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDeadLine.Location = new System.Drawing.Point(163, 306);
+            this.dtpDeadLine.Location = new System.Drawing.Point(113, 318);
             this.dtpDeadLine.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpDeadLine.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpDeadLine.Name = "dtpDeadLine";
             this.dtpDeadLine.ShowUpDown = true;
-            this.dtpDeadLine.Size = new System.Drawing.Size(224, 36);
+            this.dtpDeadLine.Size = new System.Drawing.Size(287, 36);
             this.dtpDeadLine.TabIndex = 12;
             this.dtpDeadLine.Value = new System.DateTime(2024, 11, 5, 20, 40, 17, 88);
             this.dtpDeadLine.Validating += new System.ComponentModel.CancelEventHandler(this.dtpDeadLine_Validating);
@@ -157,7 +155,7 @@
             this.lblCategory.AutoSize = true;
             this.lblCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCategory.ForeColor = System.Drawing.Color.White;
-            this.lblCategory.Location = new System.Drawing.Point(40, 377);
+            this.lblCategory.Location = new System.Drawing.Point(109, 179);
             this.lblCategory.Name = "lblCategory";
             this.lblCategory.Size = new System.Drawing.Size(85, 24);
             this.lblCategory.TabIndex = 13;
@@ -175,28 +173,10 @@
             this.cbCategories.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbCategories.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbCategories.ItemHeight = 30;
-            this.cbCategories.Location = new System.Drawing.Point(184, 371);
+            this.cbCategories.Location = new System.Drawing.Point(113, 221);
             this.cbCategories.Name = "cbCategories";
-            this.cbCategories.Size = new System.Drawing.Size(162, 36);
+            this.cbCategories.Size = new System.Drawing.Size(196, 36);
             this.cbCategories.TabIndex = 14;
-            // 
-            // chkIsCompleted
-            // 
-            this.chkIsCompleted.AutoSize = true;
-            this.chkIsCompleted.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.chkIsCompleted.CheckedState.BorderRadius = 0;
-            this.chkIsCompleted.CheckedState.BorderThickness = 0;
-            this.chkIsCompleted.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.chkIsCompleted.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(221)))));
-            this.chkIsCompleted.Location = new System.Drawing.Point(98, 428);
-            this.chkIsCompleted.Name = "chkIsCompleted";
-            this.chkIsCompleted.Size = new System.Drawing.Size(105, 20);
-            this.chkIsCompleted.TabIndex = 15;
-            this.chkIsCompleted.Text = "Is Completed";
-            this.chkIsCompleted.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.chkIsCompleted.UncheckedState.BorderRadius = 0;
-            this.chkIsCompleted.UncheckedState.BorderThickness = 0;
-            this.chkIsCompleted.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             // 
             // errorProvider1
             // 
@@ -213,7 +193,7 @@
             this.btnSave.FillColor = System.Drawing.Color.DarkGray;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(338, 437);
+            this.btnSave.Location = new System.Drawing.Point(170, 530);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(180, 45);
             this.btnSave.TabIndex = 16;
@@ -225,9 +205,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(878, 504);
+            this.ClientSize = new System.Drawing.Size(510, 587);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.chkIsCompleted);
             this.Controls.Add(this.cbCategories);
             this.Controls.Add(this.lblCategory);
             this.Controls.Add(this.dtpDeadLine);
@@ -260,7 +239,6 @@
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpDeadLine;
         private System.Windows.Forms.Label lblCategory;
         private Guna.UI2.WinForms.Guna2ComboBox cbCategories;
-        private Guna.UI2.WinForms.Guna2CheckBox chkIsCompleted;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private Guna.UI2.WinForms.Guna2Button btnSave;
     }

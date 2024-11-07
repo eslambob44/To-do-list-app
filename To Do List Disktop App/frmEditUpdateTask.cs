@@ -81,7 +81,6 @@ namespace WindowsFormsApp1
                 dtpDeadLine.Value = _Task.DeadLine;
                 string Category = clsCategory.GetCategoryName(_Task.CategoryID);
                 cbCategories.SelectedIndex = cbCategories.FindString(Category);
-                chkIsCompleted.Checked = _Task.IsCompleted;
 
             }
             
@@ -134,23 +133,39 @@ namespace WindowsFormsApp1
             }
         }
 
+        string _GetInvalidInputMessage()
+        {
+            if (txtTaskName.Text == "") return "Cant enter an empty task name";
+            else if (_Mode == enMode.AddNew && clsTask.IsTaskExists(txtTaskName.Text))
+                return "The task name already exists enter another one";
+            else if (clsTask.IsTaskExists(txtTaskName.Text) && txtTaskName.Text != _Task.TaskName)
+                return "The task name already exists enter another one";
+            else if (dtpDeadLine.Value <= DateTime.Now) return "Dead line cant be before now";
+            else return "";
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             _Task.TaskName = txtTaskName.Text;
              _Task.TaskDescription = txtDescription.Text;
             _Task.DeadLine = dtpDeadLine.Value;
             _Task.CategoryID = clsCategory.GetCategoryID(cbCategories.Text);
-            _Task.IsCompleted = chkIsCompleted.Checked;
+            _Task.IsCompleted = (_Mode == enMode.Update)?_Task.IsCompleted:false;
 
             if (_Task.Save())
             {
-                MessageBox.Show("Task saved successfully");
+                MessageBox.Show("Task saved successfully","",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 if(_Mode==enMode.AddNew)
                 {
                     _Mode = enMode.Update;
                     lblAddEdit.Text = ((_Mode == enMode.AddNew) ? "Add New" : "Update") + " Task";
                     this.Text = lblAddEdit.Text;
                 }
+            }
+            else
+            {
+                string ErrorMessage = _GetInvalidInputMessage();
+                MessageBox.Show(ErrorMessage,"Input error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
     }
