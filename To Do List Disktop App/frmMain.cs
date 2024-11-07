@@ -29,12 +29,12 @@ namespace WindowsFormsApp1
             _TasksTable.Columns.Add("Category" ,  typeof(string));
             _TasksTable.Columns.Add("IsCompleted" , typeof(bool));
         }
+
         public frmMain()
         {
             InitializeComponent();
             _PrepareTasksTableColumns();
-            _ConvertTasksTableIntodgvTable(clsTask.ListTasks());
-            _TasksView = _TasksTable.DefaultView;
+            
         }
 
         void _ConvertTasksTableIntodgvTable(DataTable dt)
@@ -60,6 +60,9 @@ namespace WindowsFormsApp1
 
         void _LoadDataGridView()
         {
+            _ConvertTasksTableIntodgvTable(clsTask.ListTasks());
+            _TasksView = _TasksTable.DefaultView;
+            _ApplyFilterInDGV(txtSearch.Text,_Category,_Status);
             dgvTasks.DataSource = _TasksView;
         }
 
@@ -97,6 +100,79 @@ namespace WindowsFormsApp1
             _Status = (enStatus)(int.Parse(btn.Tag.ToString()));
             _ApplyFilterInDGV(txtSearch.Text,_Category, _Status);
             
+        }
+
+
+
+        private void btnAddNew_Click(object sender, EventArgs e)
+        {
+            frmAddNewUpdateTask frm = new frmAddNewUpdateTask(-1);
+            frm.ShowDialog();
+            _LoadDataGridView();
+        }
+
+        private void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(dgvTasks.SelectedRows.Count > 0)
+            {
+                string TaskName = dgvTasks.SelectedRows[0].Cells[0].Value.ToString();
+                int TaskID = clsTask.Find(TaskName).TaskID;
+                frmAddNewUpdateTask frm = new frmAddNewUpdateTask(TaskID);
+                frm.ShowDialog();
+                _LoadDataGridView();
+            }
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            if (dgvTasks.SelectedRows.Count > 0)
+            {
+                bool IsCompleted =(bool)dgvTasks.SelectedRows[0].Cells[5].Value;
+                string Label = (IsCompleted) ? "In Complete" : "Complete";
+                contextMenuStrip1.Items[1].Text = Label;
+            }
+        }
+
+        private void completeDisCompleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string TaskName = dgvTasks.SelectedRows[0].Cells[0].Value.ToString();
+            bool IsCompleted = (bool)dgvTasks.SelectedRows[0].Cells[5].Value;
+            clsTask Task  = clsTask.Find(TaskName);
+            Task.IsCompleted  = !IsCompleted;
+            Task.Save();
+            _LoadDataGridView();
+
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvTasks.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Are you sure you want to delete this task","" , MessageBoxButtons.YesNo ) == DialogResult.Yes)
+                {
+                    string TaskName = dgvTasks.SelectedRows[0].Cells[0].Value.ToString();
+                    int TaskID = clsTask.Find(TaskName).TaskID;
+                    if(clsTask.Delete(TaskID))
+                    {
+                        MessageBox.Show("Task deleted successfully");
+                        _LoadDataGridView();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to delete task");
+                    }
+                }
+            }
+        }
+
+        private void btnRemoveTasks_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to delete all tasks", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                clsTask.DeleteAllTasks();
+                MessageBox.Show("Tasks deleted successfully");
+                _LoadDataGridView();
+            }
         }
     }
 }

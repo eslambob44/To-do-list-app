@@ -28,18 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.dgvTasks = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.completeDisCompleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnShowAll = new Guna.UI2.WinForms.Guna2Button();
             this.btnShowPending = new Guna.UI2.WinForms.Guna2Button();
             this.btnShowCompleted = new Guna.UI2.WinForms.Guna2Button();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblSearch = new System.Windows.Forms.Label();
             this.pbIcon = new System.Windows.Forms.PictureBox();
+            this.btnAddNew = new Guna.UI2.WinForms.Guna2Button();
+            this.btnRemoveTasks = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTasks)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,6 +74,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvTasks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvTasks.ColumnHeadersHeight = 27;
+            this.dgvTasks.ContextMenuStrip = this.contextMenuStrip1;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -104,6 +113,38 @@
             this.dgvTasks.ThemeStyle.RowsStyle.Height = 22;
             this.dgvTasks.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvTasks.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.updateToolStripMenuItem,
+            this.completeDisCompleteToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(200, 70);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            // 
+            // updateToolStripMenuItem
+            // 
+            this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.updateToolStripMenuItem.Text = "&Update";
+            this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
+            // 
+            // completeDisCompleteToolStripMenuItem
+            // 
+            this.completeDisCompleteToolStripMenuItem.Name = "completeDisCompleteToolStripMenuItem";
+            this.completeDisCompleteToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.completeDisCompleteToolStripMenuItem.Text = "&Complete/DisComplete";
+            this.completeDisCompleteToolStripMenuItem.Click += new System.EventHandler(this.completeDisCompleteToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.deleteToolStripMenuItem.Text = "&Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // btnShowAll
             // 
@@ -199,12 +240,51 @@
             this.pbIcon.TabIndex = 6;
             this.pbIcon.TabStop = false;
             // 
+            // btnAddNew
+            // 
+            this.btnAddNew.AutoRoundedCorners = true;
+            this.btnAddNew.BorderRadius = 21;
+            this.btnAddNew.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddNew.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddNew.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAddNew.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAddNew.FillColor = System.Drawing.Color.DarkGray;
+            this.btnAddNew.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnAddNew.ForeColor = System.Drawing.Color.White;
+            this.btnAddNew.Location = new System.Drawing.Point(633, 32);
+            this.btnAddNew.Name = "btnAddNew";
+            this.btnAddNew.Size = new System.Drawing.Size(180, 45);
+            this.btnAddNew.TabIndex = 17;
+            this.btnAddNew.Text = "Add new task";
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
+            // 
+            // btnRemoveTasks
+            // 
+            this.btnRemoveTasks.AutoRoundedCorners = true;
+            this.btnRemoveTasks.BorderRadius = 21;
+            this.btnRemoveTasks.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnRemoveTasks.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnRemoveTasks.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnRemoveTasks.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnRemoveTasks.FillColor = System.Drawing.Color.DarkGray;
+            this.btnRemoveTasks.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnRemoveTasks.ForeColor = System.Drawing.Color.White;
+            this.btnRemoveTasks.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoveTasks.Image")));
+            this.btnRemoveTasks.Location = new System.Drawing.Point(834, 32);
+            this.btnRemoveTasks.Name = "btnRemoveTasks";
+            this.btnRemoveTasks.Size = new System.Drawing.Size(131, 45);
+            this.btnRemoveTasks.TabIndex = 18;
+            this.btnRemoveTasks.Text = "Remave Tasks";
+            this.btnRemoveTasks.Click += new System.EventHandler(this.btnRemoveTasks_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(977, 432);
+            this.Controls.Add(this.btnRemoveTasks);
+            this.Controls.Add(this.btnAddNew);
             this.Controls.Add(this.pbIcon);
             this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.txtSearch);
@@ -219,6 +299,7 @@
             this.Text = "To do list";
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTasks)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -234,6 +315,12 @@
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.PictureBox pbIcon;
+        private Guna.UI2.WinForms.Guna2Button btnAddNew;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem completeDisCompleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private Guna.UI2.WinForms.Guna2Button btnRemoveTasks;
     }
 }
 
