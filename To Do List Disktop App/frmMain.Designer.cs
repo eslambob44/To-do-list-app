@@ -43,9 +43,10 @@
             this.btnShowCompleted = new Guna.UI2.WinForms.Guna2Button();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblSearch = new System.Windows.Forms.Label();
-            this.pbIcon = new System.Windows.Forms.PictureBox();
             this.btnAddNew = new Guna.UI2.WinForms.Guna2Button();
+            this.btnTimer = new Guna.UI2.WinForms.Guna2Button();
             this.btnRemoveTasks = new Guna.UI2.WinForms.Guna2Button();
+            this.pbIcon = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTasks)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).BeginInit();
@@ -230,16 +231,6 @@
             this.lblSearch.TabIndex = 5;
             this.lblSearch.Text = "Search";
             // 
-            // pbIcon
-            // 
-            this.pbIcon.Image = global::WindowsFormsApp1.Properties.Resources.To_do_list;
-            this.pbIcon.Location = new System.Drawing.Point(0, 0);
-            this.pbIcon.Name = "pbIcon";
-            this.pbIcon.Size = new System.Drawing.Size(152, 104);
-            this.pbIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbIcon.TabIndex = 6;
-            this.pbIcon.TabStop = false;
-            // 
             // btnAddNew
             // 
             this.btnAddNew.AutoRoundedCorners = true;
@@ -257,6 +248,23 @@
             this.btnAddNew.TabIndex = 17;
             this.btnAddNew.Text = "Add new task";
             this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
+            // 
+            // btnTimer
+            // 
+            this.btnTimer.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnTimer.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnTimer.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTimer.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnTimer.FillColor = System.Drawing.Color.DarkGray;
+            this.btnTimer.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.btnTimer.ForeColor = System.Drawing.Color.White;
+            this.btnTimer.Location = new System.Drawing.Point(0, 278);
+            this.btnTimer.Name = "btnTimer";
+            this.btnTimer.Size = new System.Drawing.Size(152, 61);
+            this.btnTimer.TabIndex = 19;
+            this.btnTimer.Tag = "1";
+            this.btnTimer.Text = "Timer";
+            this.btnTimer.Click += new System.EventHandler(this.btnTimer_Click);
             // 
             // btnRemoveTasks
             // 
@@ -277,18 +285,29 @@
             this.btnRemoveTasks.Text = "Remave Tasks";
             this.btnRemoveTasks.Click += new System.EventHandler(this.btnRemoveTasks_Click);
             // 
+            // pbIcon
+            // 
+            this.pbIcon.Image = global::WindowsFormsApp1.Properties.Resources.To_do_list;
+            this.pbIcon.Location = new System.Drawing.Point(0, 0);
+            this.pbIcon.Name = "pbIcon";
+            this.pbIcon.Size = new System.Drawing.Size(152, 104);
+            this.pbIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbIcon.TabIndex = 6;
+            this.pbIcon.TabStop = false;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(977, 432);
+            this.Controls.Add(this.dgvTasks);
+            this.Controls.Add(this.btnTimer);
             this.Controls.Add(this.btnRemoveTasks);
             this.Controls.Add(this.btnAddNew);
             this.Controls.Add(this.pbIcon);
             this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.dgvTasks);
             this.Controls.Add(this.btnShowCompleted);
             this.Controls.Add(this.btnShowPending);
             this.Controls.Add(this.btnShowAll);
@@ -321,6 +340,7 @@
         private System.Windows.Forms.ToolStripMenuItem completeDisCompleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private Guna.UI2.WinForms.Guna2Button btnRemoveTasks;
+        private Guna.UI2.WinForms.Guna2Button btnTimer;
     }
 }
 

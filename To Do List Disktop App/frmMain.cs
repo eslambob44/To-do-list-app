@@ -174,5 +174,11 @@ namespace WindowsFormsApp1
                 _LoadDataGridView();
             }
         }
+
+        private void btnTimer_Click(object sender, EventArgs e)
+        {
+            frmTimer frm = new frmTimer();
+            frm.Show();
+        }
     }
 }

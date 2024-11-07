@@ -27,3 +27,4 @@ D:\programmin\first jorney\To do list app\To Do List Disktop App\bin\Debug\Data 
 D:\programmin\first jorney\To do list app\To Do List Disktop App\obj\Debug\WindowsFormsApp1.frmMain.resources
 D:\programmin\first jorney\To do list app\To Do List Disktop App\bin\Debug\Guna.UI2.dll
 D:\programmin\first jorney\To do list app\To Do List Disktop App\obj\Debug\WindowsFormsApp1.frmAddNewUpdateTask.resources
+D:\programmin\first jorney\To do list app\To Do List Disktop App\obj\Debug\WindowsFormsApp1.frmTimer.resources
